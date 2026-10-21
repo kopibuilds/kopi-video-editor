@@ -138,6 +138,23 @@ Watch the draft and give feedback in the same chat, preferably with timestamps:
 Once satisfied, say: **Approved. Export the final video.** For another recording,
 start at step 4. Your computer must stay awake while processing.
 
+## Updates
+
+Kopi checks for updates **once a week when you next use it**. It does not run a
+background service or wake your computer. If an update is available, your
+assistant explains what changed and asks whether you want to install it.
+**Checking does not install anything.** You can continue using your current version.
+
+Updates wait until editing and rendering have finished. Your recordings, projects,
+preferences, and client brand kits stay local. If you changed the editor's code,
+the assistant checks for conflicts rather than overwriting your work. Failed or
+offline checks do not stop editing. Herk engine upgrades are reviewed separately.
+
+You can also say **"Check Kopi for updates"** or **"Update Kopi Video Editor"**.
+An explicit update request approves a safe update; a check-only request does not.
+If you installed Kopi before this feature was added, ask for an update once to
+receive it. No GitHub account or API key is required for the public update check.
+
 ## More things you can ask for
 
 Use normal language in the same Codex or Claude Code chat. These options are
@@ -177,6 +194,7 @@ folder, and the assistant replaces example names with your actual project paths.
 | Command | What it does | When it is used |
 | --- | --- | --- |
 | `node kopi.mjs doctor` | Checks whether required programs are available. | During setup or troubleshooting. |
+| `node kopi.mjs updates` | Checks for a Kopi update if the weekly check is due; never installs it. | At the start of a new assistant session. Add `--check-now` to bypass the cache. |
 | `node kopi.mjs setup` | Downloads and prepares the editing engine, then creates a short sample video on your computer to test rendering. | First-time setup, or to resume/check setup. |
 | `node kopi.mjs project my-video` | Creates a working project for a new edit. | At the start of a new video project. |
 | `node kopi.mjs transcribe "inbox/My Video/recording.mp4"` | Turns speech into text with word timings, using local Whisper. | When a recording needs a transcript. |
@@ -203,6 +221,8 @@ installed Python environment supports it; it does not silently fall back to CPU.
 
 For advanced setups only, KOPI_PYTHON chooses a Python executable and
 KOPI_ENGINE_HOME selects an engine folder already checked out at the pinned revision.
+KOPI_UPDATE_CHECK=off disables automatic update checks. Manual checks remain available.
+See [the update guide](docs/UPDATES.md) for approval and preservation details.
 
 ## What this includes
 

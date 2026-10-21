@@ -20,3 +20,19 @@ This is a smoke test on one existing Windows environment. It does not establish
 compatibility with every fresh PC, macOS/Linux, every Python configuration, or
 every assistant/model. No human listening test or multi-client cloud deployment
 is implied by these checks.
+
+## Weekly update checker
+
+Checked on Windows on 2026-10-21:
+
+- All 14 command/update tests passed, including weekly caching, offline retry
+  throttling, manual checks, damaged cache recovery, diverged history, source-file
+  preservation, and permission notices without installation.
+- A live public GitHub check identified the current version and a second call
+  used the saved weekly result. A live comparison using an older published
+  revision identified available changes and produced an approval notice.
+- Both changed assistant skill entry points passed metadata validation.
+- The existing 1080p starter still rendered after the command-entry changes.
+
+These checks validate the helper and its instructions. They do not guarantee an
+assistant will obey every instruction or implement automatic engine migration.

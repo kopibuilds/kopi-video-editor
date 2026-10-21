@@ -4,6 +4,9 @@ This project provides command helpers for Nate Herk's editing engine. It does no
 replace the engine's creative editing skills. Work inside this repository and
 keep each recording's artifacts inside its own engine project.
 
+At the beginning of a new session, use the cached update check in UPDATES.md.
+Do not install an available update without approval or interrupt an ongoing edit.
+
 ## First visit
 
 1. Run `node kopi.mjs doctor`. Report missing tools in plain language. Check PATH

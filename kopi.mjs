@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import { checkForUpdates, updateNotice } from './scripts/updates.mjs';
 
 export const home = dirname(fileURLToPath(import.meta.url));
 export const engine = process.env.KOPI_ENGINE_HOME
@@ -138,14 +139,28 @@ function render(slug, final, outputName) {
   console.log(`Video: ${destination}`);
 }
 
-export function main(argv = process.argv.slice(2)) {
+export async function main(argv = process.argv.slice(2)) {
   const { positionals, values } = parseArgs({ args: argv, allowPositionals: true, options: {
     help: { type: 'boolean', short: 'h' }, final: { type: 'boolean' },
     model: { type: 'string', default: 'small' }, device: { type: 'string', default: 'cpu' },
     python: { type: 'string' }, output: { type: 'string' },
+    'check-now': { type: 'boolean' },
   }});
   const [action, argument] = positionals;
-  if (values.help || !action) return console.log(`Kopi Video Editor\n\nnode kopi.mjs doctor\nnode kopi.mjs setup\nnode kopi.mjs project my-video\nnode kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]\nnode kopi.mjs render my-video [--final]\n\nEditing itself is performed by your assistant using Herk Edit Kit's project skills.`);
+  if (values.help || !action) return console.log(`Kopi Video Editor\n\nnode kopi.mjs doctor\nnode kopi.mjs setup\nnode kopi.mjs project my-video\nnode kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]\nnode kopi.mjs render my-video [--final]\nnode kopi.mjs updates [--check-now]\n\nEditing itself is performed by your assistant using Herk Edit Kit's project skills.`);
+  if (action === 'updates') {
+    const result = await checkForUpdates({ root: home, force: values['check-now'] });
+    const notice = updateNotice(result, !values['check-now']);
+    console.log(notice || (result.cached ? 'Kopi: weekly update check is not due. No update installed.'
+      : updateNotice(result)));
+    return;
+  }
+  if (action === 'project') projectPath(argument);
+  if (['doctor', 'setup', 'project'].includes(action) && process.env.KOPI_UPDATE_CHECK !== 'off') {
+    const result = await checkForUpdates({ root: home });
+    const notice = updateNotice(result, true);
+    if (notice) console.log(notice);
+  }
   if (action === 'doctor') return doctor();
   if (action === 'setup') return setup();
   if (action === 'project') return createProject(argument);
@@ -155,5 +170,5 @@ export function main(argv = process.argv.slice(2)) {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { main(); } catch (error) { console.error(`Kopi: ${error.message}`); process.exitCode = 1; }
+  try { await main(); } catch (error) { console.error(`Kopi: ${error.message}`); process.exitCode = 1; }
 }

@@ -4,6 +4,13 @@ For setup, design suggestions, editing, or revisions, read docs/ASSISTANT.md. Th
 .agents/skills/kopi-editor/SKILL.md. Claude Code also has a discovery entry in
 .claude/skills/kopi-editor/SKILL.md; CLAUDE.md imports this guide.
 
+At the start of a new editing/proposal/review session, follow docs/UPDATES.md:
+run `node kopi.mjs updates` unless KOPI_UPDATE_CHECK=off. The check is cached for
+a week and must not interrupt an active edit or render. If a newly checked update
+is available, briefly explain it and ask permission before installing. Declining
+or being offline does not block work. A request to check does not approve installing.
+For an explicit request to update Kopi, use the safe update steps in that guide.
+
 When the user asks to suggest/propose a design, inspect a folder for editing ideas,
 or help choose a style, follow docs/PROPOSALS.md. Inspect and propose first; wait
 for approval before making video edits or rendering. A direct request to edit
