@@ -45,7 +45,9 @@ editor into a `kopi-video-editor` subfolder inside your project.
 
 ```text
 Set up Kopi Video Editor in this workspace.
-Download https://github.com/kopibuilds/kopi-video-editor into a kopi-video-editor subfolder.
+Use git clone to download https://github.com/kopibuilds/kopi-video-editor.git
+into a kopi-video-editor subfolder. If Git is missing, help me install it first.
+If this folder already contains the repository, reuse it rather than cloning again.
 Read its AGENTS.md and docs/ASSISTANT.md, then run node kopi.mjs doctor and
 node kopi.mjs setup from that subfolder.
 
