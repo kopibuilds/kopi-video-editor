@@ -53,7 +53,9 @@ Check for existing tools first and help me install anything missing.
 Use local faster-whisper. Reuse an existing Python installation and cached model
 when available. No paid services or footage uploads.
 
-Show the setup test video and ask about my provisional editing preferences.
+Create and show a short sample video to check that rendering works.
+Ask about my starting editing preferences, or let me decide them per video.
+Explain how to ask for a design suggestion before starting an edit.
 Tell me the full inbox and outbox paths and which folder to open next time.
 Explain any steps I need to complete in beginner-friendly language.
 ```
@@ -93,7 +95,25 @@ chat, or use [this sample](examples/instructions.txt) as instructions.txt.
 
 ### 5. Request an edit
 
-Open the `video-editor` folder in your assistant, then say:
+Open the `video-editor` folder in your assistant. You can start either way.
+
+**Not sure what style you want? Ask for a proposal:**
+
+```text
+Suggest a design for the video in inbox/Webinar Invite.
+```
+
+The assistant inspects the files, reads any instructions, and analyzes the speech
+and references as needed. It recommends a style, subtitles, pacing, and where
+your images or supporting footage could appear. It also explains any suggested
+cuts or sound choices. You do not need a complete brief or exact timestamps.
+
+**It waits for your approval before editing or rendering.** Request changes to
+the proposal, or say **"Go ahead with that design"** when you are ready.
+You can also say "propose an edit" or "help me choose a style" and name the folder;
+there is no special command to memorize.
+
+**Already know what you want? Give editing instructions directly:**
 
 ```text
 Edit the recording in inbox/Webinar Invite. Read instructions.txt first.
@@ -165,6 +185,7 @@ KOPI_ENGINE_HOME selects an engine folder already checked out at the pinned revi
 - Direct installation of a pinned Herk Edit Kit revision.
 - A local faster-whisper adapter using Herk's documented word-timestamp format.
 - A shared assistant guide and skill entry points for Codex and Claude Code.
+- A proposal-first mode: name a folder and ask for a design suggestion before editing.
 - Draft/final render helpers and a sample project brief.
 
 This is a local AI-assisted workflow, not the proposed Drive/n8n cloud service.

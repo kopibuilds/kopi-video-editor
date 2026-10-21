@@ -23,6 +23,20 @@ keep each recording's artifacts inside its own engine project.
    choices to be permanent preferences.
 5. Show outbox/setup-check.mp4 and the user's inbox path. Do not edit any supplied
    recording unless the user has requested an edit.
+6. Introduce both ways to start: "Tell me how to edit your video, or say
+   'Suggest a design for inbox/My Video' and I will inspect the files, recommend
+   an approach, and wait for your approval." Users may defer style decisions to
+   that proposal instead of answering every style question during setup.
+
+## Choose the requested workflow
+
+A request such as "propose a design", "suggest a style", "look through this folder
+and give me editing ideas", or "help me decide how to edit this" uses
+[the proposal workflow](PROPOSALS.md). Do not fall through to project creation,
+cutting, composition authoring, or rendering while approval is pending.
+
+A clear request to edit uses the workflow below. If the user approves a saved
+proposal, read that proposal and any subsequent corrections before continuing.
 
 ## Each video
 
@@ -53,6 +67,8 @@ keep each recording's artifacts inside its own engine project.
   No stock search/Drive connection is bundled. Use supplied assets by default.
 - Save the plan and design decisions with the project. Default to no music
   unless requested. Use music/ for user-supplied audio, keeping speech clear.
+  For an approved proposal, copy the current plan into the project's DESIGN.md
+  and keep the approved constraints and asset cues through later stages.
 
 ## Render, revise, deliver
 
