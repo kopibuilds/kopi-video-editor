@@ -29,7 +29,7 @@ are determined by your provider. Video editing and revisions consume AI allowanc
 
 **In Codex:** create a new **local project** directly in the app and name it
 `Video Editor`. Let the app create the project folder, then open a chat in that
-project. You do not need to create a folder in Documents first.
+project.
 Use a local Codex project connected to your computer, not a browser-only ChatGPT
 project. See the [official project guide](https://learn.chatgpt.com/docs/projects).
 
