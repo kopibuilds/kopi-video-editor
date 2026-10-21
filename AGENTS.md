@@ -10,6 +10,12 @@ for approval before making video edits or rendering. A direct request to edit
 still authorizes the normal editing workflow. If the intent is unclear, inspect
 the files and offer a proposal rather than assuming permission to edit.
 
+For a reference-video breakdown, read docs/REFERENCES.md. For saving or applying
+a client's video branding, read docs/BRANDING.md. For checking an exported video,
+read docs/REVIEW.md. These requests do not by themselves authorize video edits.
+The corresponding kopi-reference, kopi-brand, and kopi-review skills are available
+in both .agents/skills and .claude/skills. They reuse the installed engine's guidance.
+
 Use node kopi.mjs for checks, setup, project creation, transcription, and renders.
 The creative editing engine is Herk Edit Kit, installed at .kopi/engine. Read its
 AGENTS.md and relevant skills before editing. Keep its licenses intact.

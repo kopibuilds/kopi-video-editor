@@ -27,6 +27,9 @@ keep each recording's artifacts inside its own engine project.
    'Suggest a design for inbox/My Video' and I will inspect the files, recommend
    an approach, and wait for your approval." Users may defer style decisions to
    that proposal instead of answering every style question during setup.
+   Also mention that they can ask for a reference breakdown, save a client's
+   approved branding, or request a draft review. These are optional capabilities,
+   not extra forms or required setup steps.
 
 ## Choose the requested workflow
 
@@ -38,6 +41,10 @@ cutting, composition authoring, or rendering while approval is pending.
 A clear request to edit uses the workflow below. If the user approves a saved
 proposal, read that proposal and any subsequent corrections before continuing.
 
+Other focused requests use their own guides: [reference breakdown](REFERENCES.md),
+[client branding](BRANDING.md), or [export review](REVIEW.md). Load only what the
+request needs. They do not automatically start the complete editing workflow.
+
 ## Each video
 
 - Find the named folder inside inbox. Read instructions.txt or instructions.md
@@ -45,11 +52,13 @@ proposal, read that proposal and any subsequent corrections before continuing.
   If several recordings exist and the intended source is unclear, ask.
 - Current user instructions take precedence over project briefs, confirmed
   personal rules, style defaults, and engine examples, in that order.
+  If a client is explicitly selected, load its profile as described in BRANDING.md
+  below the current brief in priority. Keep other clients' profiles out of the edit.
 - Create a short lowercase project name with `node kopi.mjs project <slug>`.
   The default engine directory is .kopi/engine; its project directory is
   .kopi/engine/video-projects/<slug>. Preserve the input and work on a copy in
   that project's assets folder.
-- Read .kopi/engine/AGENTS.md and docs/WORKFLOW.md. Choose the engine's edit-video
+- Read .kopi/engine/AGENTS.md and .kopi/engine/docs/WORKFLOW.md. Choose the engine's edit-video
   skill for a full workflow or short-form-edit for Shorts/short ads. Read relevant
   HyperFrames/GSAP skills before implementing compositions. Do not bypass their
   timeline, media, and verification contracts.
@@ -78,6 +87,7 @@ outbox. `--final` selects a higher rendering preset after user approval.
 Review the encoded file itself: captions, image cues, face visibility, transitions,
 black frames, and audio joins. Save a VERIFY.md report and state review limitations
 honestly. Screenshots or waveform checks are not proof that audio was heard.
+Use REVIEW.md for a focused review request or a more detailed export checklist.
 
 Optional SRT files belong with project assets, not beside burned-caption exports,
 where players may load a duplicate subtitle layer. Describe the draft and request

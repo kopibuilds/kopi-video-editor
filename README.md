@@ -138,6 +138,28 @@ Watch the draft and give feedback in the same chat, preferably with timestamps:
 Once satisfied, say: **Approved. Export the final video.** For another recording,
 start at step 4. Your computer must stay awake while processing.
 
+## More things you can ask for
+
+Use normal language in the same Codex or Claude Code chat. These options are
+included in the assistant's instructions; there are no special commands to memorize.
+
+| What you want | Example message |
+| --- | --- |
+| Understand a reference video's style | "Break down reference-video.mp4 in inbox/Webinar Invite. Explain its pacing, captions, and visuals, and what could work for my video." |
+| Save a client's approved branding | "Save the logo, fonts, colors, and approved style in this folder as Client A's brand kit for future videos." |
+| Use a saved client style | "Edit this video using Client A's branding. Keep the changes in my current brief." |
+| Check an exported video | "Review outbox/my-video-draft.mp4 against my instructions. Give me timestamped issues before changing anything." |
+| Review and correct an editable project | "Review this draft and fix the problems you find. Keep the previous version and show me the new draft." |
+
+Reference analysis explains the style; it does not automatically copy footage or
+start editing. When creating a new client style, the assistant separates your
+approved choices from its suggestions. Saved client branding stays private and
+your current video's instructions take priority.
+
+A review reports the checks actually performed and any limitations. It is done
+by your current assistant, not an independent second AI agent, and still benefits
+from your final watch-through. Reviewing alone does not authorize changes.
+
 ## Commands for your assistant
 
 **You can skip this section. You do not need to type these commands yourself.**
@@ -188,6 +210,7 @@ KOPI_ENGINE_HOME selects an engine folder already checked out at the pinned revi
 - A local faster-whisper adapter using Herk's documented word-timestamp format.
 - A shared assistant guide and skill entry points for Codex and Claude Code.
 - A proposal-first mode: name a folder and ask for a design suggestion before editing.
+- Reference-video breakdowns, private client brand profiles, and export review guidance.
 - Draft/final render helpers and a sample project brief.
 
 This is a local AI-assisted workflow, not the proposed Drive/n8n cloud service.

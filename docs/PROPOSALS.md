@@ -31,6 +31,8 @@ or the full video watched when only frames, a transcript, or waveforms were used
   the source duration and aspect ratio, examine representative frames across the
   recording, and inspect references as available. Use the configured local
   transcription helper if needed to understand speech and insertion cues.
+  For detailed reference analysis use REFERENCES.md. If the user selected a
+  client with a saved profile, apply BRANDING.md; do not borrow another client's style.
 - Save private analysis under .kopi/proposals/<project-name>/analysis. For example,
   pass `--output .kopi/proposals/<project-name>/analysis/source.words.json` to
   `node kopi.mjs transcribe <recording>`. Reuse matching existing transcripts;
