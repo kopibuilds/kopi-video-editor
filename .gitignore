@@ -1,0 +1,30 @@
+# Installed engine, working media, and user-specific configuration
+.kopi/
+inbox/
+outbox/
+music/
+preferences/
+my-sounds/
+kit/
+node_modules/
+my-style.md
+my-rules.md
+.env
+.env.*
+*.words.json
+*.srt
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.webm
+*.m4a
+
+# Credentials and machine artifacts
+*.pem
+*.key
+auth.json
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

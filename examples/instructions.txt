@@ -1,0 +1,11 @@
+PROJECT: Webinar invitation
+DELIVERY: Landscape 16:9, suitable for YouTube.
+RECORDING: recording.mp4
+
+Preserve every spoken line. Add readable subtitles without covering faces.
+Display poster.png as the speaker introduces the webinar.
+Use only supplied B-roll. Treat reference-video.mp4 as a style reference.
+No background music. Keep any effects subtle.
+
+These choices apply to this recording only. Keep the source file unchanged.
+Save a draft to outbox for review before producing the final export.

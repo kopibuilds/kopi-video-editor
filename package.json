@@ -1,0 +1,13 @@
+{
+  "name": "kopi-video-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Kopi's local workflow for Herk Edit Kit",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "doctor": "node kopi.mjs doctor",
+    "setup": "node kopi.mjs setup",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
