@@ -39,13 +39,13 @@ For a terminal interface, start Claude Code from that folder as its setup guide
 describes.
 
 The project name is your choice. In the next step, the assistant downloads the
-editor into a `video-editor` subfolder inside your project.
+editor into a `kopi-video-editor` subfolder inside your project.
 
 ### 3. Paste this into your Codex or Claude Code chat
 
 ```text
 Set up Kopi Video Editor in this workspace.
-Download https://github.com/kopibuilds/video-editor into a video-editor subfolder.
+Download https://github.com/kopibuilds/kopi-video-editor into a kopi-video-editor subfolder.
 Read its AGENTS.md and docs/ASSISTANT.md, then run node kopi.mjs doctor and
 node kopi.mjs setup from that subfolder.
 
@@ -76,7 +76,7 @@ Its update notice is informational: keep the tested revision unless upgrading de
 Use a separate folder for each video. For example:
 
 ```text
-video-editor/
+kopi-video-editor/
   inbox/
     Webinar Invite/
       recording.mp4
@@ -95,7 +95,7 @@ chat, or use [this sample](examples/instructions.txt) as instructions.txt.
 
 ### 5. Request an edit
 
-Open the `video-editor` folder in your assistant. You can start either way.
+Open the `kopi-video-editor` folder in your assistant. You can start either way.
 
 **Not sure what style you want? Ask for a proposal:**
 
@@ -147,7 +147,7 @@ Edit the recording in inbox/Webinar Invite using the instructions in that folder
 
 Your assistant runs the appropriate commands on your computer. The table below
 is a technical reference for the assistant or anyone maintaining the setup;
-it is not a checklist to run for every video. Commands run from the `video-editor`
+it is not a checklist to run for every video. Commands run from the `kopi-video-editor`
 folder, and the assistant replaces example names with your actual project paths.
 
 | Command | What it does | When it is used |
