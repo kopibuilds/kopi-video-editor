@@ -108,16 +108,32 @@ start at step 4. Your computer must stay awake while processing.
 
 ## Commands for your assistant
 
-Run these from the repository folder:
+**You can skip this section. You do not need to type these commands yourself.**
+Tell Codex or Claude Code what you want in normal language, such as:
 
 ```text
-node kopi.mjs doctor
-node kopi.mjs setup
-node kopi.mjs project my-video
-node kopi.mjs transcribe "inbox/My Video/recording.mp4"
-node kopi.mjs render my-video
-node kopi.mjs render my-video --final
+Edit the recording in inbox/Webinar Invite using the instructions in that folder.
 ```
+
+Your assistant runs the appropriate commands on your computer. The table below
+is a technical reference for the assistant or anyone maintaining the setup;
+it is not a checklist to run for every video. Commands run from the `video-editor`
+folder, and the assistant replaces example names with your actual project paths.
+
+| Command | What it does | When it is used |
+| --- | --- | --- |
+| `node kopi.mjs doctor` | Checks whether required programs are available. | During setup or troubleshooting. |
+| `node kopi.mjs setup` | Downloads and prepares the editing engine, then creates a short sample video on your computer to test rendering. | First-time setup, or to resume/check setup. |
+| `node kopi.mjs project my-video` | Creates a working project for a new edit. | At the start of a new video project. |
+| `node kopi.mjs transcribe "inbox/My Video/recording.mp4"` | Turns speech into text with word timings, using local Whisper. | When a recording needs a transcript. |
+| `node kopi.mjs render my-video` | Exports the prepared edit as a draft MP4 in `outbox`. | After the assistant has built or revised the edit. |
+| `node kopi.mjs render my-video --final` | Exports the prepared edit using a higher-quality preset. | After you approve the edit. |
+
+These commands handle setup and processing. **The assistant still reads your brief,
+makes the editing decisions, and builds the video between those steps.** Running
+the render command alone does not automatically edit a raw recording.
+
+### Additional technical details
 
 The engine is installed under `.kopi/engine`. Projects live under
 `.kopi/engine/video-projects/<project-name>`. Setup preserves existing projects
