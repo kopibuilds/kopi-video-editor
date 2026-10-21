@@ -25,11 +25,21 @@ Ordinary ChatGPT or Claude browser chat is not this local editing environment.
 Use your own account with sufficient usage. Subscription availability and billing
 are determined by your provider. Video editing and revisions consume AI allowance.
 
-### 2. Create and open an editor folder
+### 2. Create your editor project
 
-On Windows, open File Explorer, go to Documents, and make a folder named
-`My Video Editor`. Open that folder in Codex or Claude Code. If your interface
-uses a terminal, start Claude Code from that folder as described in its guide.
+**In Codex:** create a new **local project** directly in the app and name it
+`Video Editor`. Let the app create the project folder, then open a chat in that
+project. You do not need to create a folder in Documents first.
+Use a local Codex project connected to your computer, not a browser-only ChatGPT
+project. See the [official project guide](https://learn.chatgpt.com/docs/projects).
+
+**In Claude Code or an interface that asks for an existing folder:** create a
+folder named `Video Editor` wherever you prefer, then open it in your assistant.
+For a terminal interface, start Claude Code from that folder as its setup guide
+describes.
+
+The project name is your choice. In the next step, the assistant downloads the
+editor into a `video-editor` subfolder inside your project.
 
 ### 3. Paste this into your Codex or Claude Code chat
 
