@@ -1,5 +1,26 @@
 # Local validation
 
+## Private profiles and workflow separation — 11 November 2026
+
+- All 28 Node tests passed on Windows, including external profile installation,
+  separate workflow/show resolution, pinned updates, package validation, traversal
+  and junction rejection, changed-file detection and a cold CLI installation with
+  no engine. No tests were skipped in the final elevated local run.
+- All three changed/new Codex skill entry points passed the bundled skill validator.
+- A privately supplied package installed into the external user profile store;
+  actual CLI reads loaded only the selected workflow and no show by default.
+- Existing yt-dlp was discovered and its version checked. Downloader argument,
+  failure, destination and completed-file checks used offline test fixtures; no
+  new live YouTube media download was made for this release validation.
+- The launcher produced another 8-second setup-check render at a new filename.
+  Source recordings, previous exports, the private package and workspace selection
+  remain excluded from Git. No cloud job, publishing or paid API was invoked.
+
+These are local helper/packaging checks, not proof of every fresh computer or
+assistant's behavior. Private asset references do not establish access or local
+availability for another team member. Automated Drive delivery and scheduling are
+not implemented by this release.
+
 Checked on Windows on 2026-10-21 with Node.js 24 and the revision in engine.json.
 
 - Six Node command tests passed, covering project path traversal, transcription

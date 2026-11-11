@@ -35,6 +35,10 @@ test('unsafe project names are rejected before engine access', () => {
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Project names/);
 });
+test('render output paths cannot escape outbox', () => {
+  const result = spawnSync(process.execPath, [join(home, 'kopi.mjs'), 'render', 'example', '--output', '../outside.mp4'], { encoding: 'utf8' });
+  assert.equal(result.status, 1); assert.match(result.stderr, /filename inside outbox/);
+});
 
 test('transcription refuses to overwrite either input or existing output', () => {
   const directory = mkdtempSync(join(tmpdir(), 'kopi-guard-'));

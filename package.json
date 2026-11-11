@@ -1,6 +1,6 @@
 {
   "name": "kopi-video-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Kopi's local workflow for Herk Edit Kit",

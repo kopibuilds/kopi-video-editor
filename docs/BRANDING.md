@@ -6,6 +6,11 @@ choice does not become a permanent preference without the user's instruction.
 
 ## Create or update a profile
 
+For portable team profiles use [PROFILES.md](PROFILES.md). Those install outside
+the public checkout and separate full-edit and Shorts preferences. Preserve the
+legacy location below for existing clients; do not migrate or merge it silently.
+New portable team profiles use the external store, not tracked examples.
+
 Identify the client and supplied asset folder. Inspect logos, actual font files,
 color specifications, brand guidelines, approved examples, and any instructions.
 If the client identity is ambiguous, ask. Derive a stable local folder name and

@@ -10,6 +10,13 @@ kopi.mjs for environment checks, engine setup, project creation, local speech
 recognition, and exports. Read the installed engine's editing skills for the
 creative work. The current user's instructions determine format and style.
 
+For editing, read docs/WORKFLOWS.md and select kopi-full-edit or kopi-shorts.
+Resolve only that mode's private profile with node kopi.mjs profile show
+--workflow full-edit|shorts. Show presets are explicit and optional. Full-edit
+effects and opening/end cards are not automatic Shorts preferences. For private
+team installation/update use docs/PROFILES.md; for YouTube use docs/YOUTUBE.md.
+Read docs/VERIFICATION.md before rendering and check the exact first frame.
+
 For update checks or an explicit update request, use docs/UPDATES.md. Checking
 availability never authorizes installing new code or changing the engine.
 

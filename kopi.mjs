@@ -5,11 +5,29 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { checkForUpdates, updateNotice } from './scripts/updates.mjs';
+import { installProfile, resolveProfile, saveProfilePackage, selectProfile } from './scripts/profiles.mjs';
+import { downloadYouTube, findDownloader } from './scripts/youtube.mjs';
 
 export const home = dirname(fileURLToPath(import.meta.url));
 export const engine = process.env.KOPI_ENGINE_HOME
   ? resolve(process.env.KOPI_ENGINE_HOME) : join(home, '.kopi', 'engine');
 const manifest = JSON.parse(readFileSync(join(home, 'engine.json'), 'utf8'));
+const HELP = `Kopi Video Editor
+
+node kopi.mjs doctor
+node kopi.mjs setup
+node kopi.mjs project my-video
+node kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]
+node kopi.mjs download VIDEO_URL [--output inbox/folder] [--max-height 1080]
+node kopi.mjs profile install PACKAGE_OR_FOLDER [--default] [--profile-home PATH]
+node kopi.mjs profile use PROFILE_ID [--profile-home PATH]
+node kopi.mjs profile show --workflow full-edit|shorts [--show PRESET]
+node kopi.mjs profile pack PRIVATE_FOLDER [--output PATH]
+node kopi.mjs render my-video [--final] [--output filename.mp4]
+node kopi.mjs updates [--check-now]
+
+Editing is performed by your assistant using the separate full-edit/Shorts skills.
+Private profiles install outside this checkout. No cloud scheduling or publishing is enabled.`;
 
 export function projectPath(slug, base = engine) {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug ?? '')) {
@@ -63,6 +81,8 @@ function doctor() {
   }
   try { console.log(`Local transcription: ${pythonCommand().program}`); }
   catch (error) { console.log(`Local transcription: ${error.message}`); }
+  try { const tool = findDownloader(home); console.log(`YouTube downloader: ${tool.program} (${tool.version})`); }
+  catch (error) { console.log(`YouTube downloader (needed for YouTube sources): ${error.message}`); }
   console.log(`Engine directory: ${engine}`);
   if (missing) throw new Error('Required editing tools are unavailable. Ask your assistant to help install them, then rerun setup.');
 }
@@ -124,6 +144,7 @@ function transcribe(media, options) {
 }
 
 function render(slug, final, outputName) {
+  if (outputName && (basename(outputName) !== outputName || /[\\/:]/.test(outputName) || !outputName.endsWith('.mp4'))) throw Error('Render output must be an MP4 filename inside outbox.');
   const project = projectPath(slug);
   ensureEngine();
   if (!existsSync(project)) throw new Error(`Project does not exist: ${slug}`);
@@ -144,10 +165,24 @@ export async function main(argv = process.argv.slice(2)) {
     help: { type: 'boolean', short: 'h' }, final: { type: 'boolean' },
     model: { type: 'string', default: 'small' }, device: { type: 'string', default: 'cpu' },
     python: { type: 'string' }, output: { type: 'string' },
+    workflow: { type: 'string' }, show: { type: 'string' }, profile: { type: 'string' },
+    'profile-home': { type: 'string' }, default: { type: 'boolean' },
+    'yt-dlp': { type: 'string' }, 'max-height': { type: 'string', default: '1080' },
     'check-now': { type: 'boolean' },
   }});
-  const [action, argument] = positionals;
-  if (values.help || !action) return console.log(`Kopi Video Editor\n\nnode kopi.mjs doctor\nnode kopi.mjs setup\nnode kopi.mjs project my-video\nnode kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]\nnode kopi.mjs render my-video [--final]\nnode kopi.mjs updates [--check-now]\n\nEditing itself is performed by your assistant using Herk Edit Kit's project skills.`);
+  const [action, argument, detail] = positionals;
+  if (values.help || !action) return console.log(HELP);
+  if (action === 'profile') {
+    const options = { profileHome: values['profile-home'], activate: values.default };
+    if (argument === 'install' && detail) return console.log(JSON.stringify(installProfile(home, detail, options), null, 2));
+    if (argument === 'use' && detail) return console.log(JSON.stringify(selectProfile(home, detail, options), null, 2));
+    if (argument === 'show') return console.log(JSON.stringify(resolveProfile(home, { ...options, workflow: values.workflow, show: values.show, profileId: values.profile }), null, 2));
+    if (argument === 'pack' && detail) {
+      return console.log(`Private profile package: ${saveProfilePackage(home, detail, values.output ? resolve(values.output) : undefined)}`);
+    }
+    throw Error('Use profile install <package-or-folder> [--default], profile use <id>, profile show --workflow full-edit|shorts [--show preset], or profile pack <folder> [--output path].');
+  }
+  if (action === 'download') return console.log(JSON.stringify(downloadYouTube(home, argument, { output: values.output, maxHeight: Number(values['max-height']), executable: values['yt-dlp'] }), null, 2));
   if (action === 'updates') {
     const result = await checkForUpdates({ root: home, force: values['check-now'] });
     const notice = updateNotice(result, !values['check-now']);
@@ -165,7 +200,7 @@ export async function main(argv = process.argv.slice(2)) {
   if (action === 'setup') return setup();
   if (action === 'project') return createProject(argument);
   if (action === 'transcribe') return transcribe(argument, values);
-  if (action === 'render') return render(argument, values.final);
+  if (action === 'render') return render(argument, values.final, values.output);
   throw new Error(`Unknown command: ${action}. Run node kopi.mjs --help.`);
 }
 

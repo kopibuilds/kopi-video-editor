@@ -24,6 +24,9 @@ my-rules.md
 *.pem
 *.key
 auth.json
+*.kopi-profile.json
+private-profiles/
+team-profiles/
 __pycache__/
 *.pyc
 .DS_Store

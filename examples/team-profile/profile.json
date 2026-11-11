@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "sample-studio",
+  "label": "Fictional Sample Studio",
+  "shared": "shared.md",
+  "workflows": { "full-edit": "full-edit.md", "shorts": "shorts.md" },
+  "shows": { "sample-interview": { "instructions": "shows/sample-interview.md", "workflows": ["shorts"] } },
+  "assets": []
+}

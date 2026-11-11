@@ -27,6 +27,15 @@ Use node kopi.mjs for checks, setup, project creation, transcription, and render
 The creative editing engine is Herk Edit Kit, installed at .kopi/engine. Read its
 AGENTS.md and relevant skills before editing. Keep its licenses intact.
 
+For each edit choose the workflow in docs/WORKFLOWS.md: full-edit for a complete
+video edit, shorts for extracting Shorts from a longer recording. Read only that
+mode's private preferences with node kopi.mjs profile show --workflow <mode>.
+Add a show only when explicitly selected. Do not merge the creative preference
+sets. Use kopi-full-edit or kopi-shorts accordingly. Read docs/VERIFICATION.md
+before rendering; inspect exact frame zero and every frame of the first second.
+For private team setup read docs/PROFILES.md and install profiles outside this
+repository. For YouTube sources read docs/YOUTUBE.md; reuse yt-dlp without cookies.
+
 Current project instructions override defaults. Preserve source recordings and
 honor explicit speech-preservation requirements. Never assume setup preferences
 are permanent. Local transcription is the default; reuse installed Python and

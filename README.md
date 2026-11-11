@@ -157,6 +157,40 @@ receive it. No GitHub account or API key is required for the public update check
 
 ## More things you can ask for
 
+### Separate full edits and Shorts
+
+Say **“Edit this complete video”** for the full-edit workflow, or **“Find passages
+and create Shorts from this video”** for the Shorts workflow. Each can have its
+own private preferences. Full-edit graphics, sound reactions, chapter navigation
+and opening/end cards do not automatically become Shorts defaults. The current
+brief overrides saved defaults. See [workflow routing](docs/WORKFLOWS.md).
+
+### Team profiles
+
+Teams can privately distribute one `.kopi-profile.json` file containing separate
+full-edit and Shorts rules, branding assets and optional show presets. Attach
+that package in your assistant chat and say:
+
+```text
+Install this private team profile for Kopi Video Editor and make it the default
+for this workspace. Follow docs/PROFILES.md. Keep the actual profile outside the
+public checkout. Verify full-edit and Shorts load separately. Do not start an edit.
+```
+
+Team members need no write access to this repository. Public users can use the
+editor without a team package, or create their own from the fictional example.
+No real team's settings are included publicly. See [private profiles](docs/PROFILES.md)
+for installation, updates, privacy and missing-asset behavior.
+
+### YouTube sources
+
+Ask **“Download this YouTube video and propose a Short”** and supply one video
+link. The assistant uses existing yt-dlp, saves the source locally and follows
+the requested proposal/review scope. Setup reports whether yt-dlp is available;
+the assistant can help install the official package if needed. No cookies, saved
+logins, playlist batch or publishing fallback is enabled. See
+[YouTube downloads](docs/YOUTUBE.md).
+
 Use normal language in the same Codex or Claude Code chat. These options are
 included in the assistant's instructions; there are no special commands to memorize.
 
@@ -198,6 +232,9 @@ folder, and the assistant replaces example names with your actual project paths.
 | `node kopi.mjs setup` | Downloads and prepares the editing engine, then creates a short sample video on your computer to test rendering. | First-time setup, or to resume/check setup. |
 | `node kopi.mjs project my-video` | Creates a working project for a new edit. | At the start of a new video project. |
 | `node kopi.mjs transcribe "inbox/My Video/recording.mp4"` | Turns speech into text with word timings, using local Whisper. | When a recording needs a transcript. |
+| `node kopi.mjs download VIDEO_URL` | Downloads one public YouTube video into inbox with existing yt-dlp. | When a supplied source is on YouTube. |
+| `node kopi.mjs profile install PACKAGE --default` | Installs private team rules outside the checkout and selects them for this workspace. | Team setup or a deliberate profile update. |
+| `node kopi.mjs profile show --workflow shorts` | Reads the selected Shorts rules; use full-edit for full video editing. | Before planning the chosen workflow. |
 | `node kopi.mjs render my-video` | Exports the prepared edit as a draft MP4 in `outbox`. | After the assistant has built or revised the edit. |
 | `node kopi.mjs render my-video --final` | Exports the prepared edit using a higher-quality preset. | After you approve the edit. |
 
@@ -231,6 +268,8 @@ See [the update guide](docs/UPDATES.md) for approval and preservation details.
 - A shared assistant guide and skill entry points for Codex and Claude Code.
 - A proposal-first mode: name a folder and ask for a design suggestion before editing.
 - Reference-video breakdowns, private client brand profiles, and export review guidance.
+- Separate full-edit and long-form-to-Shorts skills with private portable team profiles.
+- Bounded public YouTube downloading through an existing yt-dlp installation.
 - Draft/final render helpers and a sample project brief.
 
 This is a local AI-assisted workflow, not the proposed Drive/n8n cloud service.

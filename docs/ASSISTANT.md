@@ -20,8 +20,10 @@ Do not install an available update without approval or interrupt an ongoing edit
 3. Check local transcription. `KOPI_PYTHON` or `--python` can select an existing
    interpreter. `--model` accepts a cached model directory as well as a model
    name. Python and Whisper are not silently installed by the helper.
-4. Ask about aspect ratio, captions, pacing, graphics, music, and whether speech
-   may be cut. Save agreed provisional defaults in preferences/style.md. Render a
+4. If a private team profile is selected, load the intended workflow and preserve
+   its known choices instead of re-asking them. Otherwise ask about aspect ratio,
+   captions, pacing, graphics, music, and whether speech may be cut. Save agreed
+   provisional defaults in preferences/style.md. Render a
    small caption example on supplied footage when useful. Do not declare setup
    choices to be permanent preferences.
 5. Show outbox/setup-check.mp4 and the user's inbox path. Do not edit any supplied
@@ -35,6 +37,20 @@ Do not install an available update without approval or interrupt an ongoing edit
    not extra forms or required setup steps.
 
 ## Choose the requested workflow
+
+First distinguish **Full Video Editing** from **Long-form-to-Shorts Creation**
+using [WORKFLOWS.md](WORKFLOWS.md). Duration alone does not determine the mode.
+Read the selected private profile with `node kopi.mjs profile show --workflow
+full-edit` or `--workflow shorts`. Add `--show <preset>` only when the current
+brief/user selects that show. The workspace selection persists across chats.
+Do not load or merge the other workflow's style rules. With no selected profile,
+ordinary public use remains available using the current brief.
+
+Use the corresponding kopi-full-edit or kopi-shorts skill, then the installed
+engine's relevant skill. Read [VERIFICATION.md](VERIFICATION.md) before rendering.
+For team installation/update read [PROFILES.md](PROFILES.md); private profiles are
+kept outside the public checkout, with only an ignored local selection inside it.
+For public YouTube source downloading read [YOUTUBE.md](YOUTUBE.md).
 
 A request such as "propose a design", "suggest a style", "look through this folder
 and give me editing ideas", or "help me decide how to edit this" uses
@@ -55,7 +71,7 @@ request needs. They do not automatically start the complete editing workflow.
   If several recordings exist and the intended source is unclear, ask.
 - Current user instructions take precedence over project briefs, confirmed
   personal rules, style defaults, and engine examples, in that order.
-  If a client is explicitly selected, load its profile as described in BRANDING.md
+  If a client is explicitly selected, load its profile as described in PROFILES.md and BRANDING.md
   below the current brief in priority. Keep other clients' profiles out of the edit.
 - Create a short lowercase project name with `node kopi.mjs project <slug>`.
   The default engine directory is .kopi/engine; its project directory is
