@@ -272,7 +272,7 @@ See [the update guide](docs/UPDATES.md) for approval and preservation details.
 - Bounded public YouTube downloading through an existing yt-dlp installation.
 - Draft/final render helpers and a sample project brief.
 
-This is a local AI-assisted workflow, not the proposed Drive/n8n cloud service.
+This is a local AI-assisted workflow.
 It does not include stock search, automatic publishing, or a separate automatic
 reviewer service. Check every video's text, visuals, timing, and sound before use.
 Quality and speed depend on your brief, footage, computer, and chosen assistant.
