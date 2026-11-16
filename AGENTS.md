@@ -1,5 +1,9 @@
 # Kopi workspace instructions
 
+For video files or YouTube links to carousel, poster or Shorts, use
+kopi-video-repurpose and docs/VIDEO-REPURPOSING.md. Keep each output's design
+preferences separate; a shared entry point does not merge their presets.
+
 For every static image design containing text, automatically deliver a directly
 editable local HTML version as the only default output, regardless of whether
 the user calls it a photo, carousel, poster, thumbnail, cover or another name.

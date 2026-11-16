@@ -56,6 +56,10 @@ Do not install an available update without approval or interrupt an ongoing edit
 
 ## Choose the requested workflow
 
+For video/YouTube to carousel, poster or Shorts requests, use kopi-video-repurpose
+and [VIDEO-REPURPOSING.md](VIDEO-REPURPOSING.md). Keep output-specific preferences
+separate. This entry point reuses the Shorts mode below when Shorts are requested.
+
 First distinguish **Full Video Editing** from **Long-form-to-Shorts Creation**
 using [WORKFLOWS.md](WORKFLOWS.md). Duration alone does not determine the mode.
 Read the selected private profile with `node kopi.mjs profile show --workflow

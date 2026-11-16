@@ -6,7 +6,11 @@ export button. Generate separate PNG/JPG files only when explicitly requested;
 exports-only requests can omit the editor. This applies
 regardless of the output's name and also to static designs made with a video pack.
 
-Kopi supports two separate video assistant workflows. They share tools and verification,
+For a local video or YouTube link repurposed into a carousel, poster or Shorts,
+start with kopi-video-repurpose and VIDEO-REPURPOSING.md. It routes each requested
+output to its own preferences; it does not combine their design presets.
+
+Kopi supports two separate video editing modes. They share tools and verification,
 but do not silently share creative preferences.
 
 | Request | Workflow | Skill |

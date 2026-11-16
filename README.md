@@ -18,6 +18,11 @@ or installation is needed for the editor.
 See [editable image designs](docs/IMAGE-EDITOR.md). Existing team checkouts need
 an approved Kopi update to receive the generator and these default instructions.
 
+For a video file or YouTube link, ask for a carousel, poster or Shorts. The
+repurposing skill reuses saved choices; on first use it asks about optional
+branding and offers design directions for the requested output. Personal settings
+and assets stay local. See [video repurposing](docs/VIDEO-REPURPOSING.md).
+
 ### 1. Choose your assistant
 
 You need an assistant that can work with files and run programs on your computer.
