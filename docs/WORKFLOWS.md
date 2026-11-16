@@ -1,6 +1,10 @@
 # Choose the editing workflow
 
-Kopi supports two separate assistant workflows. They share tools and verification,
+For any static image design with text, automatically include the local manual
+editor described in IMAGE-EDITOR.md alongside the image exports. This applies
+regardless of the output's name and also to static designs made with a video pack.
+
+Kopi supports two separate video assistant workflows. They share tools and verification,
 but do not silently share creative preferences.
 
 | Request | Workflow | Skill |
@@ -63,6 +67,8 @@ Automatic transcripts can be wrong, especially on names and mixed languages.
 The assistant must not invent speech or pretend to have listened to audio.
 
 This release provides local tools and assistant instructions. Drive delivery,
-channel monitoring, schedules, cloud-worker orchestration and photo/carousel
-automation require separately configured integrations; profile installation does
+channel monitoring, schedules and cloud-worker orchestration require separately
+configured integrations. Static image editors are generated locally from layered
+design manifests; automatic content selection and unattended production are not
+enabled by this command. Profile installation does
 not enable any of them.

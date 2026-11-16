@@ -9,6 +9,13 @@ and onboarding. Herk Edit Kit supplies the editing framework and creative tools.
 
 ## Beginner guide
 
+Static designs with text automatically include a manual editor alongside their
+image exports, whether you ask for a carousel, photo post, thumbnail, poster,
+cover or similar graphic. Open the HTML to edit text, replace/crop photos and
+export PNGs yourself. No extra request, account or installation is needed.
+See [editable image designs](docs/IMAGE-EDITOR.md). Existing team checkouts need
+an approved Kopi update to receive the generator and these default instructions.
+
 ### 1. Choose your assistant
 
 You need an assistant that can work with files and run programs on your computer.

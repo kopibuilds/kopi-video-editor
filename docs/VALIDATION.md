@@ -1,5 +1,28 @@
 # Local validation
 
+## Editable static image designs — 16 November 2026
+
+- The generator runs without the editing engine or additional Node packages,
+  embeds local image assets, escapes supplied text as data, supports multiple
+  canvas sizes/pages, and refuses to overwrite existing output files.
+- The Node suite has 37 tests: 35 passed and two existing junction tests skipped
+  in the restricted Windows executor. No failures. These tests cover the new
+  command, multi-page output, script-like text, invalid geometry/layer IDs,
+  network input rejection, and source/output preservation.
+- An isolated headless Chrome session tested a real four-slide carousel plus
+  a separate synthetic 1200×630 thumbnail. Inline text editing, photo replacement,
+  crop zoom, project save/reopen, independent edits between pages, native-size PNG
+  downloads, responsive widths of 320/540/1100px, and absence of script errors passed.
+- Browser testing used fresh temporary browser storage, no saved user profiles,
+  credentials, screen capture of user apps, paid services or new installations.
+- Private source images, manifests, browser reports and generated HTML remain
+  in ignored local folders. Only reusable code, template, instructions and
+  synthetic unit tests belong in the shared commit.
+- Other browsers and operating systems were not executed here. System font
+  availability can affect layout, and browser autosave is best effort; the
+  portable project JSON is the explicit editable backup. Manual edits are local
+  to each copy; the command does not enable real-time team collaboration.
+
 ## Private profiles and workflow separation — 11 November 2026
 
 - All 28 Node tests passed on Windows, including external profile installation,

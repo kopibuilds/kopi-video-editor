@@ -1,5 +1,15 @@
 # Assistant operating guide
 
+## Static designs with text
+
+Automatically include a manual HTML editor whenever creating or revising any
+static design with text: photos/posts, carousels, posters, thumbnails, covers,
+quote cards, banners and other names. The user should not have to request it.
+Follow IMAGE-EDITOR.md and run `node kopi.mjs image-editor` from layered source
+data, preserving separate replaceable images and editable text. Deliver normal
+image exports as well. A request to edit a static design does not start the video
+workflow. Respect an explicit exports-only request.
+
 This project provides command helpers for Nate Herk's editing engine. It does not
 replace the engine's creative editing skills. Work inside this repository and
 keep each recording's artifacts inside its own engine project.

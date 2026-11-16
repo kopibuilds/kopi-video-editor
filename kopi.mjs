@@ -21,6 +21,7 @@ node kopi.mjs dependencies
 node kopi.mjs project my-video
 node kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]
 node kopi.mjs download VIDEO_URL [--output inbox/folder] [--max-height 1080]
+node kopi.mjs image-editor DESIGN_JSON [--output outbox/folder/editor.html]
 node kopi.mjs profile install PACKAGE_OR_FOLDER [--default] [--profile-home PATH]
 node kopi.mjs profile use PROFILE_ID [--profile-home PATH]
 node kopi.mjs profile show --workflow full-edit|shorts [--show PRESET]
@@ -175,6 +176,11 @@ export async function main(argv = process.argv.slice(2)) {
   }});
   const [action, argument, detail] = positionals;
   if (values.help || !action) return console.log(HELP);
+  if (action === 'image-editor') {
+    if (!argument) throw Error('Supply a design JSON manifest after image-editor. See docs/IMAGE-EDITOR.md.');
+    const { buildImageEditor } = await import('./scripts/image-editor.mjs');
+    return console.log(JSON.stringify(buildImageEditor(argument, values.output), null, 2));
+  }
   if (action === 'profile') {
     const options = { profileHome: values['profile-home'], activate: values.default };
     if (argument === 'install' && detail) return console.log(JSON.stringify(installProfile(home, detail, options), null, 2));

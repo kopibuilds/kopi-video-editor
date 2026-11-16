@@ -24,3 +24,14 @@ For requests to propose a design, suggest a style, or inspect footage for editin
 ideas, read docs/PROPOSALS.md. This mode permits local analysis and a saved proposal,
 not video editing or rendering. Wait for the user's approval, then carry the
 approved plan into the normal editing workflow. No special command is required.
+
+## Editable static designs by default
+
+Whenever producing or revising a static image design with text, automatically
+include a directly editable HTML editor alongside PNG/JPG exports. This covers
+photos/posts, carousels, posters, thumbnails, quote cards, covers, banners and
+other names. Read docs/IMAGE-EDITOR.md and use node kopi.mjs image-editor with
+separate photo and text layers. Do not require the user to ask for a manual
+editor or substitute a presentation's Request edits chat. An explicit
+exports-only request overrides this default. Keep private assets and outputs
+out of Git. This does not start a video edit for a static-design request.
