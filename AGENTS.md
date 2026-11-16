@@ -1,5 +1,12 @@
 # Kopi workspace instructions
 
+For topic/copy-based social cards, photo panels, quote cards or infographics,
+use kopi-graphics and packs/kopi-graphics/SKILL.md. Resolve applicable private
+packs before generic setup: current explicit request, matching selected private
+pack, then saved generic settings. Preserve private preferences during updates
+and installations, including when a private pack is installed after public Kopi.
+Keep each brand and output separate; ask when private scope is unclear.
+
 For video files or YouTube links to carousel, poster or Shorts, use
 kopi-video-repurpose and docs/VIDEO-REPURPOSING.md. Keep each output's design
 preferences separate; a shared entry point does not merge their presets.

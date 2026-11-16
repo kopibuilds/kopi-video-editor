@@ -48,6 +48,9 @@ choices rather than substituting another output's preferences.
 A separately supplied graphics pack is an optional style source, not a replacement
 for the saved video-carousel/poster references. Use its templates only when the
 user or current brief selects them. Do not publish private instructions or assets.
+The built-in kopi-graphics pack follows the same rule. If its style is explicitly
+requested, resolve applicable private-pack preferences before generic setup. A
+matching private pack retains priority regardless of installation/update order.
 
 ## Static output production
 

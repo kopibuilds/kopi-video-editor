@@ -1,0 +1,9 @@
+{
+  "title": "Illustrative carousel",
+  "format": "carousel",
+  "slides": [
+    {"style": "tweet", "headline": "Choose one useful habit.", "body": "Keep the first step small enough to repeat."},
+    {"style": "tweet", "appearance": "threads", "headline": "Give it a place in your day.", "body": "Choose a time that works for you."},
+    {"style": "infographic", "layout": "checklist", "title": "A simple starting plan", "sections": [{"title": "Choose", "text": "One repeatable action."}, {"title": "Try", "text": "See how it fits your day."}, {"title": "Review", "text": "Adjust what does not work."}], "source": "Illustrative copy, not research."}
+  ]
+}

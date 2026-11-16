@@ -25,6 +25,12 @@ and assets stay local. See [video repurposing](docs/VIDEO-REPURPOSING.md).
 
 ### 1. Choose your assistant
 
+The built-in [Kopi graphics pack](packs/kopi-graphics/README.md) offers social-card
+appearances, light/dark/custom themes, photo panels, quote designs and seven
+infographic layouts. On first use it asks for missing identity, colours and photo
+source choices. No client identity or photo library is bundled. Matching private
+packs take precedence and retain their settings through public updates.
+
 You need an assistant that can work with files and run programs on your computer.
 Ordinary ChatGPT or Claude browser chat is not this local editing environment.
 

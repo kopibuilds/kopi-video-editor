@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "shared": {
+    "identity": {"name": null, "handle": null, "avatar": null, "logo": null, "signature": null},
+    "photoSource": null
+  },
+  "outputs": {
+    "carousel": {
+      "setupComplete": false,
+      "theme": "light",
+      "font": "Arial",
+      "appearance": "neutral",
+      "background": "plain",
+      "interactions": false,
+      "size": [1080, 1080]
+    }
+  }
+}

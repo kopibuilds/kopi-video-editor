@@ -2,6 +2,13 @@
 
 ## Static designs with text
 
+Topic/copy-based template graphics use kopi-graphics and
+[the generic pack](../packs/kopi-graphics/SKILL.md). Resolve applicable private
+preferences before generic setup. A matching private pack wins over generic
+settings regardless of installation order; an explicit current request can select
+another pack for that job. Do not overwrite private files or combine unrelated
+brand/output defaults. Unknown legacy pack scope requires confirmation.
+
 Automatically include a manual HTML editor whenever creating or revising any
 static design with text: photos/posts, carousels, posters, thumbnails, covers,
 quote cards, banners and other names. The user should not have to request it.
