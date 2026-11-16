@@ -35,3 +35,8 @@ separate photo and text layers. Do not require the user to ask for a manual
 editor or substitute a presentation's Request edits chat. An explicit
 exports-only request overrides this default. Keep private assets and outputs
 out of Git. This does not start a video edit for a static-design request.
+
+For an approved Kopi update, follow docs/UPDATES.md and use node kopi.mjs update.
+Do not snapshot pending changes with a local commit or stash. Never configure
+Git author name/email or push as part of updating. Stop on local code changes
+or diverged history; preserve private preferences and ask the owner what to do.

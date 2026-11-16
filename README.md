@@ -239,6 +239,7 @@ folder, and the assistant replaces example names with your actual project paths.
 | `node kopi.mjs updates` | Checks for a Kopi update if the weekly check is due; never installs it. | At the start of a new assistant session. Add `--check-now` to bypass the cache. |
 | `node kopi.mjs setup` | Downloads and prepares the editing engine, then creates a short sample video on your computer to test rendering. | First-time setup, or to resume/check setup. |
 | `node kopi.mjs dependencies` | Installs missing yt-dlp locally and checks required tools. | During installation and after an approved Kopi update. |
+| `node kopi.mjs update` | Applies an approved clean fast-forward update and checks dependencies. Stops on local changes, divergent history or an engine upgrade; never commits or asks for author identity. | When you ask the assistant to update Kopi. |
 | `node kopi.mjs project my-video` | Creates a working project for a new edit. | At the start of a new video project. |
 | `node kopi.mjs transcribe "inbox/My Video/recording.mp4"` | Turns speech into text with word timings, using local Whisper. | When a recording needs a transcript. |
 | `node kopi.mjs download VIDEO_URL` | Downloads one public YouTube video into inbox with existing yt-dlp. | When a supplied source is on YouTube. |

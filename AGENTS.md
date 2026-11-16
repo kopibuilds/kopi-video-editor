@@ -23,6 +23,13 @@ a week and must not interrupt an active edit or render. If a newly checked updat
 is available, briefly explain it and ask permission before installing. Declining
 or being offline does not block work. A request to check does not approve installing.
 For an explicit request to update Kopi, use the safe update steps in that guide.
+Use `node kopi.mjs update` for an approved update. Updating never authorizes
+creating a local commit, stash, merge commit, rebase or push, or configuring
+user.name/user.email. Never ask a teammate for author identity just to update.
+If local changes/history prevent a fast-forward, stop and explain; do not save
+them in a commit to make the update work. Windows sandbox setup is separate
+from Kopi setup: report an actual platform prompt rather than starting it as
+a routine Kopi update step or weakening its protections.
 
 When the user asks to suggest/propose a design, inspect a folder for editing ideas,
 or help choose a style, follow docs/PROPOSALS.md. Inspect and propose first; wait

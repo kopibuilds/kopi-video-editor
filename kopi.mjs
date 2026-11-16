@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import { checkForUpdates, updateNotice } from './scripts/updates.mjs';
+import { applyApprovedUpdate, checkForUpdates, updateNotice } from './scripts/updates.mjs';
 import { installProfile, resolveProfile, saveProfilePackage, selectProfile } from './scripts/profiles.mjs';
 import { downloadPlan, downloadYouTube, findDownloader } from './scripts/youtube.mjs';
 import { ensureDownloader } from './scripts/dependencies.mjs';
@@ -28,6 +28,7 @@ node kopi.mjs profile show --workflow full-edit|shorts [--show PRESET]
 node kopi.mjs profile pack PRIVATE_FOLDER [--output PATH]
 node kopi.mjs render my-video [--final] [--output filename.mp4]
 node kopi.mjs updates [--check-now]
+node kopi.mjs update
 
 Editing is performed by your assistant using the separate full-edit/Shorts skills.
 Private profiles install outside this checkout. No cloud scheduling or publishing is enabled.`;
@@ -176,6 +177,14 @@ export async function main(argv = process.argv.slice(2)) {
   }});
   const [action, argument, detail] = positionals;
   if (values.help || !action) return console.log(HELP);
+  if (action === 'update') {
+    const result = applyApprovedUpdate({root: home});
+    console.log(JSON.stringify(result, null, 2));
+    // Start a fresh process so updated dependency code, not pre-update imports, runs.
+    try { execute(process.execPath, [join(home, 'kopi.mjs'), 'dependencies']); }
+    catch (error) { throw Error(`Code is at ${result.installed}, but dependency verification is incomplete: ${error.message}`); }
+    return;
+  }
   if (action === 'image-editor') {
     if (!argument) throw Error('Supply a design JSON manifest after image-editor. See docs/IMAGE-EDITOR.md.');
     const { buildImageEditor } = await import('./scripts/image-editor.mjs');

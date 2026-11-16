@@ -1,11 +1,61 @@
 import { spawnSync } from 'node:child_process';
-import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 export const WEEK = 7 * 24 * 60 * 60 * 1000;
 const DAY = 24 * 60 * 60 * 1000;
 const API = 'https://api.github.com/repos/kopibuilds/kopi-video-editor';
 const shaPattern = /^[a-f0-9]{40}$/i;
+const PUBLIC_SOURCE = 'https://github.com/kopibuilds/kopi-video-editor.git';
+
+export function runUpdateGit(root, args) {
+  // Public read-only remote access; suppress credential helpers and prompts.
+  // Disable hooks/autostash for this command only. Never alter saved Git config.
+  const result = spawnSync('git', ['-C', root,
+    '-c', `core.hooksPath=${process.platform === 'win32' ? 'NUL' : '/dev/null'}`,
+    '-c', 'credential.helper=', '-c', 'core.askPass=', '-c', 'credential.interactive=false',
+    '-c', 'http.extraHeader=', '-c', 'http.followRedirects=false',
+    '-c', 'merge.autoStash=false', ...args], {
+    windowsHide: true, encoding: 'utf8', timeout: 45000, maxBuffer: 4 * 1024 * 1024,
+    env: { ...process.env, GIT_ASKPASS: '', SSH_ASKPASS: '', GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'Never' },
+  });
+  if (result.error) throw Error(`Update command could not run: ${result.error.message}`);
+  return {status: result.status, stdout: (result.stdout ?? '').trim(), stderr: (result.stderr ?? '').trim()};
+}
+
+export function applyApprovedUpdate({root, git = runUpdateGit} = {}) {
+  function run(args, allowed = [0]) {
+    const result = git(root, args);
+    if (!allowed.includes(result.status)) throw Error(`Update stopped at git ${args[0]}: ${result.stderr || 'command failed'}. No local commit, stash or author configuration will be created.`);
+    return result;
+  }
+  const top = run(['rev-parse', '--show-toplevel']).stdout;
+  if (resolve(top) !== resolve(root)) throw Error('Run the updater from a Git clone of Kopi, not an unrelated parent repository.');
+  const origin = run(['remote', 'get-url', 'origin']).stdout;
+  if (!/^(https:\/\/github\.com\/|git@github\.com:)kopibuilds\/kopi-video-editor(?:\.git)?\/?$/i.test(origin)) throw Error('Update stopped: origin is not the official Kopi repository.');
+  if (run(['status', '--porcelain']).stdout) throw Error('Update stopped: local code changes or untracked files exist. Preserve them and ask the owner how to handle them. Do not commit, stash, reset, clean or configure Git identity to continue.');
+  const branch = run(['symbolic-ref', '--quiet', 'HEAD'], [0, 1]);
+  if (branch.status !== 0) throw Error('Update stopped: detached HEAD. Do not create or switch branches automatically.');
+  for (const name of ['MERGE_HEAD', 'CHERRY_PICK_HEAD', 'REVERT_HEAD', 'rebase-merge', 'rebase-apply']) {
+    const file = run(['rev-parse', '--git-path', name]).stdout;
+    if (existsSync(resolve(root, file))) throw Error('Update stopped: another Git operation is in progress. Do not continue, abort or commit it automatically.');
+  }
+  const before = run(['rev-parse', 'HEAD']).stdout;
+  if (!shaPattern.test(before)) throw Error('Invalid installed commit.');
+  run(['fetch', '--no-tags', '--no-recurse-submodules', PUBLIC_SOURCE, 'refs/heads/main']);
+  const target = run(['rev-parse', 'FETCH_HEAD^{commit}']).stdout;
+  if (!shaPattern.test(target)) throw Error('Invalid fetched commit.');
+  // No merge commit can be created: require local HEAD to be an ancestor first.
+  if (run(['merge-base', '--is-ancestor', before, target], [0, 1]).status !== 0) throw Error('Update stopped: local history is ahead or diverged. Ask the owner to review it; do not merge, rebase, commit, stash or change author settings.');
+  const changed = run(['diff', '--name-only', before, target, '--', 'engine.json']).stdout;
+  if (changed) throw Error('Update stopped: the pinned Herk engine changes. Review compatibility and obtain a separate engine-upgrade plan before updating.');
+  const summary = run(['log', '--oneline', `${before}..${target}`]).stdout;
+  if (run(['status', '--porcelain']).stdout || run(['rev-parse', 'HEAD']).stdout !== before || run(['symbolic-ref', '--quiet', 'HEAD']).stdout !== branch.stdout) throw Error('Update stopped: checkout changed during the check. Nothing will be merged automatically.');
+  if (before !== target) run(['merge', '--ff-only', '--no-edit', '--no-autostash', target]);
+  const after = run(['rev-parse', 'HEAD']).stdout;
+  if (after !== target) throw Error('Update verification failed: HEAD does not match the published commit. Do not report success or reset files automatically.');
+  return {status: before === target ? 'current' : 'updated', before, installed: after, summary};
+}
 
 function gitRead(root, args) {
   const result = spawnSync('git', ['-C', root, ...args], {

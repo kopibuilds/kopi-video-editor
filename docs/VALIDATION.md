@@ -1,5 +1,18 @@
 # Local validation
 
+## Updates without snapshot commits — 16 November 2026
+
+The complete Node suite passed all 42 tests on Windows outside the restricted
+executor, including the two junction checks previously skipped in that executor.
+New tests use temporary local repositories, synthetic fixture authors, and local
+transport in place of GitHub; no credentials or network are used. They verify a
+real fast-forward with empty author identity, no extra commit, dirty-file refusal,
+diverged-history refusal, pinned-engine refusal, detached/wrong-source refusal,
+offline failure preservation, and preservation of ignored private files. No live
+checkout was updated and no Windows sandbox configuration was changed by these
+tests. The updater's dependency step uses a fresh process after the fast-forward;
+failures report the installed code revision without claiming setup completion.
+
 ## Editable static image designs — 16 November 2026
 
 - The generator runs without the editing engine or additional Node packages,
