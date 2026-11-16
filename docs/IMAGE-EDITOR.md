@@ -36,6 +36,23 @@ This is an assistant workflow default backed by a local generator. It does not
 watch folders or retroactively discover/rebuild all previous designs on its own.
 No publishing, uploads, paid generation or credential access is authorized by it.
 
+## Choosing still frames from video
+
+For carousel images, covers and thumbnails (including Shorts covers), visually
+compare candidate frames before selecting one. Prefer a sharp, flattering moment;
+avoid awkward mid-speech mouth positions, blinks, distorted expressions and motion
+blur. Check the actual crop, not just the uncropped source frame.
+
+The selected photo need not match the exact timestamp of the slide's words.
+Prefer a better nearby frame of the same person from the same segment; broaden
+within the same recording when needed. Preserve accurate quote attribution and
+context, and do not imply an unrelated reaction or event association.
+
+This rule concerns selected still images. In moving video, including Shorts,
+natural speaking expressions are expected: prioritize natural delivery and pacing
+rather than cutting around every open mouth or blink. A current brief overrides
+these defaults.
+
 ## Manifest
 
 Paths are relative to the manifest file. Coordinates and font sizes are pixels.

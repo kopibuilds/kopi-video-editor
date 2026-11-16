@@ -10,6 +10,10 @@ data, preserving separate replaceable images and editable text. Deliver only the
 editor by default, with its PNG export button. Generate separate PNG/JPG files
 only when explicitly requested; exports-only requests can omit the editor.
 A request to edit a static design does not start the video workflow.
+For carousel stills and covers/thumbnails extracted from video, follow the frame
+selection rules in IMAGE-EDITOR.md: choose a flattering, sharp moment rather than
+requiring the exact spoken timestamp, while preserving attribution and context.
+Do not apply this still-selection rule as cuts around natural speech in video.
 
 This project provides command helpers for Nate Herk's editing engine. It does not
 replace the engine's creative editing skills. Work inside this repository and
