@@ -1,7 +1,9 @@
 # Choose the editing workflow
 
 For any static image design with text, automatically include the local manual
-editor described in IMAGE-EDITOR.md alongside the image exports. This applies
+editor described in IMAGE-EDITOR.md as the only default output, with its PNG
+export button. Generate separate PNG/JPG files only when explicitly requested;
+exports-only requests can omit the editor. This applies
 regardless of the output's name and also to static designs made with a video pack.
 
 Kopi supports two separate video assistant workflows. They share tools and verification,

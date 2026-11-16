@@ -1,7 +1,8 @@
 # Editable image designs by default
 
 Every new or revised static design containing text must include a self-contained
-manual editor alongside its PNG/JPG exports. Apply this by the actual content,
+manual editor as the only default output, including its PNG export button.
+Generate separate PNG/JPG files only when explicitly requested. Apply this by the actual content,
 not the name: photo posts, carousels, posters, thumbnails, quote cards, covers,
 banners, infographics and other images with text all qualify. The user does not
 need to say “manual editor.” A current explicit request for exports only overrides
@@ -20,12 +21,14 @@ frame of a video.
    --output outbox/JOB/image-editor.html`. No engine, extra packages, account,
    server, subscription, API calls or installations are needed for this command.
 4. Inspect the layout and check the primary text-edit/photo-replace/PNG-export
-   interactions on a representative design. Deliver the editor together with
-   normal exports. Open its local HTML in the available side-panel browser when
+   interactions on a representative design. Deliver only the editor by default.
+   Temporary local screenshots for layout verification are not extra deliverables;
+   do not create a separate image-delivery workflow unless requested.
+   Open its local HTML in the available side-panel browser when
    supported; otherwise give its absolute file link. A presentation preview with
    “Request edits” is not a substitute for direct manual editing.
 5. For revisions, generate a new output filename and preserve the prior editor,
-   source manifest and exports. Use the same design data for static exports and
+   source manifest and any requested exports. Use the same design data for static exports and
    the editor so their words, crops and positions agree. The editor's PNG export
    can produce the static delivery; never quietly change an approved design.
 

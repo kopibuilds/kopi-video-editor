@@ -1,11 +1,12 @@
 # Kopi workspace instructions
 
 For every static image design containing text, automatically deliver a directly
-editable local HTML version alongside the image exports, regardless of whether
+editable local HTML version as the only default output, regardless of whether
 the user calls it a photo, carousel, poster, thumbnail, cover or another name.
 Do not wait for the user to request a manual editor. Read docs/IMAGE-EDITOR.md
 and use `node kopi.mjs image-editor` with separate image and text layers.
-An explicit exports-only brief can override this default. Keep private assets
+The editor must include PNG export. Generate separate PNG/JPG files only when
+explicitly requested; an exports-only brief can omit the editor. Keep private assets
 and generated editors out of Git.
 
 For setup, design suggestions, editing, or revisions, read docs/ASSISTANT.md. The shared skill is
