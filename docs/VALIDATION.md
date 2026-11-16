@@ -57,3 +57,21 @@ Checked on Windows on 2026-10-21:
 
 These checks validate the helper and its instructions. They do not guarantee an
 assistant will obey every instruction or implement automatic engine migration.
+
+## Required YouTube downloader installation
+
+Checked on Windows on 2026-11-16:
+
+- All 33 tests passed, including missing-tool installation, existing-tool reuse,
+  checksum rejection, failed execution/network handling, and profile isolation.
+- A real cold install in an isolated ignored folder downloaded the official
+  Windows x64 yt-dlp release, verified its SHA256 checksum and successfully ran
+  its version check (2026.10.26).
+- macOS Intel/Apple Silicon and Windows ARM64 asset selection is covered by
+  tests; actual execution on those operating systems was not tested.
+- Installation does not download a source video or prove that every YouTube URL
+  is downloadable. Site restrictions and missing third-party runtime prerequisites
+  can still prevent a particular download.
+- Approved updates must run the dependency command; a bare Git pull cannot
+  automatically execute it. Existing older assistants must read the updated
+  AGENTS.md and docs/UPDATES.md after fetching the new version.

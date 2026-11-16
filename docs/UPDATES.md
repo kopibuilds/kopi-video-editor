@@ -59,8 +59,14 @@ For a clean compatible checkout, fast-forward to the reviewed official main
 revision (`git merge --ff-only <reviewed-commit>` after fetch). Keep inbox,
 outbox, preferences, music, and .kopi projects/cache untouched. If Git reports
 untracked files would be overwritten, stop instead of deleting them. Re-read the
-updated instructions, inspect changed setup requirements, and run relevant tests
-or checks before resuming. Do not silently install new paid dependencies.
+updated instructions, inspect changed setup requirements, and run
+`node kopi.mjs dependencies` before reporting the update complete. This reuses
+working yt-dlp or installs the official platform build locally, verifies its
+checksum and version, then checks required tools. A Git pull alone is not a
+completed Kopi update. Handle missing prerequisites as part of the update without
+requiring the user to name them. If installation is blocked, report the actual
+blocker and do not claim dependency setup succeeded. Run relevant tests or checks
+before resuming. Do not silently install new paid dependencies.
 
 If anything fails, report the current version and failure. Do not promise
 automatic rollback or use destructive rollback commands on private files.

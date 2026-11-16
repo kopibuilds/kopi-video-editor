@@ -9,7 +9,10 @@ Do not install an available update without approval or interrupt an ongoing edit
 
 ## First visit
 
-1. Run `node kopi.mjs doctor`. Report missing tools in plain language. Check PATH
+1. Run `node kopi.mjs dependencies`, then `node kopi.mjs doctor`. The dependency
+   command installs missing yt-dlp automatically from its official release into
+   .kopi/tools and reuses a working installation. Do not treat it as an optional
+   task for the user to remember. Report missing tools in plain language. Check PATH
    and permissions before diagnosing a missing program. Never reinstall an
    existing Python/Whisper environment simply because a sandbox blocks it.
 2. After installing any missing prerequisites with appropriate authorization,

@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { checkForUpdates, updateNotice } from './scripts/updates.mjs';
 import { installProfile, resolveProfile, saveProfilePackage, selectProfile } from './scripts/profiles.mjs';
-import { downloadYouTube, findDownloader } from './scripts/youtube.mjs';
+import { downloadPlan, downloadYouTube, findDownloader } from './scripts/youtube.mjs';
+import { ensureDownloader } from './scripts/dependencies.mjs';
 
 export const home = dirname(fileURLToPath(import.meta.url));
 export const engine = process.env.KOPI_ENGINE_HOME
@@ -16,6 +17,7 @@ const HELP = `Kopi Video Editor
 
 node kopi.mjs doctor
 node kopi.mjs setup
+node kopi.mjs dependencies
 node kopi.mjs project my-video
 node kopi.mjs transcribe recording.mp4 [--model small] [--python PATH] [--output PATH]
 node kopi.mjs download VIDEO_URL [--output inbox/folder] [--max-height 1080]
@@ -82,12 +84,13 @@ function doctor() {
   try { console.log(`Local transcription: ${pythonCommand().program}`); }
   catch (error) { console.log(`Local transcription: ${error.message}`); }
   try { const tool = findDownloader(home); console.log(`YouTube downloader: ${tool.program} (${tool.version})`); }
-  catch (error) { console.log(`YouTube downloader (needed for YouTube sources): ${error.message}`); }
+  catch (error) { console.error(`Required YouTube downloader: ${error.message} Run node kopi.mjs dependencies.`); missing = true; }
   console.log(`Engine directory: ${engine}`);
   if (missing) throw new Error('Required editing tools are unavailable. Ask your assistant to help install them, then rerun setup.');
 }
 
-function setup() {
+async function setup() {
+  await ensureDownloader(home);
   doctor();
   directories();
   if (!existsSync(join(engine, '.git'))) {
@@ -182,7 +185,17 @@ export async function main(argv = process.argv.slice(2)) {
     }
     throw Error('Use profile install <package-or-folder> [--default], profile use <id>, profile show --workflow full-edit|shorts [--show preset], or profile pack <folder> [--output path].');
   }
-  if (action === 'download') return console.log(JSON.stringify(downloadYouTube(home, argument, { output: values.output, maxHeight: Number(values['max-height']), executable: values['yt-dlp'] }), null, 2));
+  if (action === 'dependencies') {
+    await ensureDownloader(home);
+    doctor();
+    return;
+  }
+  if (action === 'download') {
+    const options = { output: values.output, maxHeight: Number(values['max-height']), executable: values['yt-dlp'] };
+    downloadPlan(home, argument, options);
+    if (!options.executable) await ensureDownloader(home, { log: console.error });
+    return console.log(JSON.stringify(downloadYouTube(home, argument, options), null, 2));
+  }
   if (action === 'updates') {
     const result = await checkForUpdates({ root: home, force: values['check-now'] });
     const notice = updateNotice(result, !values['check-now']);

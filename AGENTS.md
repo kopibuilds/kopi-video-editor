@@ -4,6 +4,11 @@ For setup, design suggestions, editing, or revisions, read docs/ASSISTANT.md. Th
 .agents/skills/kopi-editor/SKILL.md. Claude Code also has a discovery entry in
 .claude/skills/kopi-editor/SKILL.md; CLAUDE.md imports this guide.
 
+Setup and approved updates must include `node kopi.mjs dependencies`. This installs
+missing yt-dlp locally from official releases and verifies it; reuse existing tools.
+Do not call an update complete after only pulling Git or leave downloader setup
+for the user to request separately. Report blocked installations honestly.
+
 At the start of a new editing/proposal/review session, follow docs/UPDATES.md:
 run `node kopi.mjs updates` unless KOPI_UPDATE_CHECK=off. The check is cached for
 a week and must not interrupt an active edit or render. If a newly checked update

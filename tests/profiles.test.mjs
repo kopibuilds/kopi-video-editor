@@ -92,7 +92,7 @@ test('no selected profile leaves strangers on the public guidance', t => {
 test('cold-install CLI installs a supplied package and reads two separate workflows without an engine', t => {
   const f = fixture(t), sourceRoot = fileURLToPath(new URL('../', import.meta.url));
   mkdirSync(join(f.root, 'scripts'));
-  for (const file of ['kopi.mjs', 'engine.json', 'scripts/profiles.mjs', 'scripts/youtube.mjs', 'scripts/updates.mjs']) copyFileSync(join(sourceRoot, file), join(f.root, file));
+  for (const file of ['kopi.mjs', 'engine.json', 'scripts/profiles.mjs', 'scripts/youtube.mjs', 'scripts/updates.mjs', 'scripts/dependencies.mjs']) copyFileSync(join(sourceRoot, file), join(f.root, file));
   const bundle = join(f.folder, 'team.kopi-profile.json'); saveProfilePackage(f.root, f.source, bundle);
   const cli = args => spawnSync(process.execPath, [join(f.root, 'kopi.mjs'), ...args], { encoding: 'utf8' });
   const installed = cli(['profile', 'install', bundle, '--profile-home', f.profileHome, '--default']);

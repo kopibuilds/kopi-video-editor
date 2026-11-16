@@ -48,7 +48,7 @@ Set up Kopi Video Editor in this workspace.
 Use git clone to download https://github.com/kopibuilds/kopi-video-editor.git
 into a kopi-video-editor subfolder. If Git is missing, help me install it first.
 If this folder already contains the repository, reuse it rather than cloning again.
-Read its AGENTS.md and docs/ASSISTANT.md, then run node kopi.mjs doctor and
+Read its AGENTS.md and docs/ASSISTANT.md, then run node kopi.mjs dependencies and
 node kopi.mjs setup from that subfolder.
 
 Check for existing tools first and help me install anything missing.
@@ -185,9 +185,10 @@ for installation, updates, privacy and missing-asset behavior.
 ### YouTube sources
 
 Ask **“Download this YouTube video and propose a Short”** and supply one video
-link. The assistant uses existing yt-dlp, saves the source locally and follows
-the requested proposal/review scope. Setup reports whether yt-dlp is available;
-the assistant can help install the official package if needed. No cookies, saved
+link. The assistant uses yt-dlp, saves the source locally and follows
+the requested proposal/review scope. Setup and approved updates install missing
+yt-dlp automatically from its official release and reuse working installations.
+You do not need to ask for downloader installation separately. No cookies, saved
 logins, playlist batch or publishing fallback is enabled. See
 [YouTube downloads](docs/YOUTUBE.md).
 
@@ -230,6 +231,7 @@ folder, and the assistant replaces example names with your actual project paths.
 | `node kopi.mjs doctor` | Checks whether required programs are available. | During setup or troubleshooting. |
 | `node kopi.mjs updates` | Checks for a Kopi update if the weekly check is due; never installs it. | At the start of a new assistant session. Add `--check-now` to bypass the cache. |
 | `node kopi.mjs setup` | Downloads and prepares the editing engine, then creates a short sample video on your computer to test rendering. | First-time setup, or to resume/check setup. |
+| `node kopi.mjs dependencies` | Installs missing yt-dlp locally and checks required tools. | During installation and after an approved Kopi update. |
 | `node kopi.mjs project my-video` | Creates a working project for a new edit. | At the start of a new video project. |
 | `node kopi.mjs transcribe "inbox/My Video/recording.mp4"` | Turns speech into text with word timings, using local Whisper. | When a recording needs a transcript. |
 | `node kopi.mjs download VIDEO_URL` | Downloads one public YouTube video into inbox with existing yt-dlp. | When a supplied source is on YouTube. |
