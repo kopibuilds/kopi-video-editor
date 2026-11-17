@@ -2,8 +2,12 @@
   "schemaVersion": 1,
   "id": "kopi-graphics",
   "visibility": "public",
-  "version": "1.0.0",
-  "formats": ["carousel", "poster", "graphic"],
+  "version": "1.0.1",
+  "formats": [
+    "carousel",
+    "poster",
+    "graphic"
+  ],
   "settingsDirectory": ".kopi/graphics/settings",
   "firstUseSetup": true
 }
