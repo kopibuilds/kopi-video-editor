@@ -10,6 +10,10 @@ kopi.mjs for environment checks, engine setup, project creation, local speech
 recognition, and exports. Read the installed engine's editing skills for the
 creative work. The current user's instructions determine format and style.
 
+For SDE/event highlights or event recaps from photos/videos, use kopi-sde and
+docs/EVENT-HIGHLIGHTS.md. Ask about missing logos/branding, music and event
+priorities; keep event preferences separate from full-edit and Shorts.
+
 For video/YouTube to carousel, poster or Shorts, start with kopi-video-repurpose
 and docs/VIDEO-REPURPOSING.md. Keep each output's saved design preferences separate.
 For video editing modes, read docs/WORKFLOWS.md and select kopi-full-edit or kopi-shorts.

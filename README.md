@@ -23,6 +23,13 @@ repurposing skill reuses saved choices; on first use it asks about optional
 branding and offers design directions for the requested output. Personal settings
 and assets stay local. See [video repurposing](docs/VIDEO-REPURPOSING.md).
 
+For an **SDE / event highlights video**, provide event photos/videos in a local
+folder or your own public Drive folder, plus the event name and details. The
+assistant asks about missing priorities, optional logos, music and tone. Vertical
+1080x1920 is the default; 90 seconds is a proposed starting target, adjusted to
+the brief and usable footage. Confirmed event preferences stay local and separate
+from interview/video presets. See [event highlights](docs/EVENT-HIGHLIGHTS.md).
+
 ### 1. Choose your assistant
 
 The built-in [Kopi graphics pack](packs/kopi-graphics/README.md) offers social-card

@@ -63,11 +63,17 @@ Do not install an available update without approval or interrupt an ongoing edit
 
 ## Choose the requested workflow
 
+For an SDE/same-day edit, event highlights or event recap from event photos/videos,
+use kopi-sde and [EVENT-HIGHLIGHTS.md](EVENT-HIGHLIGHTS.md). Ask for missing event,
+branding/logo and music decisions, use the stated vertical default, and keep event
+preferences separate. Follow that guide's montage intake/production steps rather
+than falling through to talking-head cuts or loading a full-edit/Shorts profile.
+
 For video/YouTube to carousel, poster or Shorts requests, use kopi-video-repurpose
 and [VIDEO-REPURPOSING.md](VIDEO-REPURPOSING.md). Keep output-specific preferences
 separate. This entry point reuses the Shorts mode below when Shorts are requested.
 
-First distinguish **Full Video Editing** from **Long-form-to-Shorts Creation**
+For other video editing, distinguish **Full Video Editing** from **Long-form-to-Shorts Creation**
 using [WORKFLOWS.md](WORKFLOWS.md). Duration alone does not determine the mode.
 Read the selected private profile with `node kopi.mjs profile show --workflow
 full-edit` or `--workflow shorts`. Add `--show <preset>` only when the current

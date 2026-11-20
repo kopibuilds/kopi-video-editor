@@ -10,12 +10,14 @@ For a local video or YouTube link repurposed into a carousel, poster or Shorts,
 start with kopi-video-repurpose and VIDEO-REPURPOSING.md. It routes each requested
 output to its own preferences; it does not combine their design presets.
 
-Kopi supports two separate video editing modes. They share tools and verification,
-but do not silently share creative preferences.
+Kopi provides separate event-highlights, full-edit and Shorts assistant workflows.
+They share local tools and verification, but do not silently share creative
+preferences. The profile CLI still has only full-edit and shorts modes.
 
 | Request | Workflow | Skill |
 | --- | --- | --- |
-| Edit or revise the supplied video as a complete piece | `full-edit` | `kopi-full-edit` |
+| Create/revise an SDE or event recap from photos/videos | Event montage (assistant workflow) | `kopi-sde` |
+| Edit or revise another supplied video as a complete piece | `full-edit` | `kopi-full-edit` |
 | Find passages in a longer recording and make Shorts/Reels | `shorts` | `kopi-shorts` |
 
 An already short recording can still be a full edit. Duration alone does not
@@ -24,7 +26,11 @@ Proposal requests still follow PROPOSALS.md and do not authorize rendering.
 
 ## Load only the selected preferences
 
-Before planning an edit, run:
+For an event montage, follow EVENT-HIGHLIGHTS.md and use only applicable event
+preferences under preferences/events/. Do not call profile show --workflow sde
+or inherit full-edit/Shorts preferences merely because a video profile is installed.
+
+Before planning a full-edit or Shorts edit, run:
 
 ```sh
 node kopi.mjs profile show --workflow full-edit
@@ -65,6 +71,9 @@ inbox using existing yt-dlp. Read YOUTUBE.md before downloading. A download comm
 does not select passages, transcribe, edit or publish automatically.
 
 ## Shared verification
+
+For event-specific intake, missing logo/music choices, photo/video selection,
+defaults, source access and delivery, follow [EVENT-HIGHLIGHTS.md](EVENT-HIGHLIGHTS.md).
 
 Follow VERIFICATION.md. Verification must reduce total rework, not just produce
 the fastest first render. Keep one source-to-output map for footage, audio and

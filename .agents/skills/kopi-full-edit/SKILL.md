@@ -1,7 +1,9 @@
 ---
 name: kopi-full-edit
-description: Edit or revise a supplied video as a complete piece using Kopi. Applies to presenter, product, explainer and other full edits; use kopi-shorts when extracting Shorts from a longer source.
+description: Edit or revise a supplied video as a complete piece using Kopi. Applies to presenter, product, explainer and other full edits; use kopi-shorts when extracting Shorts from a longer source and kopi-sde for event-photo/video montages.
 ---
+
+For an SDE/event highlight montage, route to kopi-sde instead.
 
 Read AGENTS.md, docs/ASSISTANT.md, docs/WORKFLOWS.md and docs/VERIFICATION.md.
 Resolve `node kopi.mjs profile show --workflow full-edit` before planning. Add a

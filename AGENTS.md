@@ -1,5 +1,11 @@
 # Kopi workspace instructions
 
+For SDE/same-day edits, event highlights or event recaps made from event photos
+and videos, use kopi-sde and docs/EVENT-HIGHLIGHTS.md. Ask about missing event
+details, optional branding/logos and music; do not assume they were declined or
+approved. Default vertical, keep event preferences separate, and reuse the local
+editor without inheriting interview/talking-head presets.
+
 For topic/copy-based social cards, photo panels, quote cards or infographics,
 use kopi-graphics and packs/kopi-graphics/SKILL.md. Resolve applicable private
 packs before generic setup: current explicit request, matching selected private
@@ -59,9 +65,11 @@ Use node kopi.mjs for checks, setup, project creation, transcription, and render
 The creative editing engine is Herk Edit Kit, installed at .kopi/engine. Read its
 AGENTS.md and relevant skills before editing. Keep its licenses intact.
 
-For each edit choose the workflow in docs/WORKFLOWS.md: full-edit for a complete
-video edit, shorts for extracting Shorts from a longer recording. Read only that
+For each edit choose the workflow in docs/WORKFLOWS.md: kopi-sde for event montages,
+full-edit for other complete video edits, shorts for extracting Shorts from a
+longer recording. For full-edit/shorts read only that
 mode's private preferences with node kopi.mjs profile show --workflow <mode>.
+The event workflow has separate preferences; do not invent a profile CLI mode.
 Add a show only when explicitly selected. Do not merge the creative preference
 sets. Use kopi-full-edit or kopi-shorts accordingly. Read docs/VERIFICATION.md
 before rendering; inspect exact frame zero and every frame of the first second.
